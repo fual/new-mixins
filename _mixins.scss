@@ -1,0 +1,63 @@
+// Миксин для градиента штрихокода.
+@mixin gradient-barcode($start-color: #555, $coords : 2 3 2) {
+
+  $colors: $start-color transparent;
+  $quantity: $coords;
+  $width: 0;
+  $color: nth($colors, 1);
+  $code: nth($colors, 1) + ' 0px';
+  @each $pos in $quantity {
+
+    $width: $width + $pos;
+    $code: $code + ' ,' + $color + ' ' + $width + 'px';
+    @if  $color == nth($colors, 1) {
+      $color: nth($colors, 2);
+    } @else {
+      $color: nth($colors, 1);
+    }
+    $code: $code + ' ,' + $color + ' ' + $width + 'px';
+  }
+
+  background: linear-gradient(to right, unquote($code));
+  background-image: -webkit-linear-gradient(to right, unquote($code));
+  background-image: -o-linear-gradient(to right, unquote($code));
+
+  width: $width + 9px;
+}
+
+@mixin font-size-styles($startSize: 10, $endSize : 30) {
+
+  @for $i from $startSize through $endSize {
+    .__f#{$i} {
+      font-size: #{$i}px !important;
+    }
+  }
+
+}
+
+
+@mixin margins_twice($quantity: 10) {
+  $indents: margin padding;
+  $location: 'top bottom' 'left right';
+
+  @each $indName in $indents {
+    $ind: str-slice($indName, 1, 1);
+    $i: 0;
+    @each $loc in $location {
+
+      $index: str-index($loc, ' '); // Где находиться пробел.
+
+      $locpref: str-slice($loc, 1, 1);
+      $locName: str-slice($loc, 1, $index);
+      $locpref2: str-slice($loc, $index+1, $index+1);
+      $locName2: str-slice($loc, $index+1, str-length($loc));
+
+      @each $q in $quantity {
+        .__#{$ind}#{$locpref}#{$locpref2}#{$q} {
+          #{$indName}-#{$locName}: #{$q}px;
+          #{$indName}-#{$locName2}: #{$q}px;
+        }
+      }
+    }
+  }
+}
