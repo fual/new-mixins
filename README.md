@@ -3,15 +3,15 @@
 
 1) Миксин для создания стилей
 Указываешь диапазон
-{code}
+
 font-size-styles($startSize: 10, $endSize : 30)
-{code}
- Получаешь набор классов вида
-{code}
+
+Получаешь набор классов вида
+
 .__f12 {
  font-size: 12px
 }
-{code}
+
 
 2) Mixin для штрих-кода gradient-barcode
 
