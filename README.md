@@ -1,20 +1,22 @@
-# new-mixins
-Мои миксины для Sass
+# Мои миксины для Sass
 
-1) Миксин для создания стилей
+## Миксин для создания стилей
 Указываешь диапазон
 
+```
 font-size-styles($startSize: 10, $endSize : 30)
+```
 
 Получаешь набор классов вида
 
+```
 .__f12 {
  font-size: 12px
 }
+```
 
-
-2) Mixin для штрих-кода gradient-barcode
-
+## Mixin для штрих-кода gradient-barcode
+```
   .test {
     width 310px;
     height 20px;
@@ -31,11 +33,9 @@ font-size-styles($startSize: 10, $endSize : 30)
       float: left;
     }
    }
-
+```
+html
+```
    <div class="test"></div>
+```
 
-2) 
-
-
-
-3) Миксины для маргинов и паддингов
